@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<!-- lang="en-GB" tells browsers and screen readers the page is in British English -->
+<html lang="en-GB">
+<head>
+  <!-- ===== BASIC PAGE SETTINGS ===== -->
+  <meta charset="UTF-8">
+  <!-- Makes the page scale properly on phones (required by CLAUDE.md) -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Abraham Nordby | AI Engineer Making AI Simple for Small Businesses</title>
+  <meta name="description" content="I'm Abraham, a senior AI engineer and software developer in Norway. I build AI automations that save small teams time.">
+
+  <!-- ===== SOCIAL SHARING (Open Graph and Twitter) =====
+       Controls the preview card when someone shares the page on social media. -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Abraham Nordby | AI Engineer Making AI Simple for Small Businesses">
+  <meta property="og:description" content="I'm Abraham, a senior AI engineer and software developer in Norway. I build AI automations that save small teams time.">
+  <!-- TODO: add a 1200 × 630px sharing image, then uncomment these two lines:
+  <meta property="og:image" content="https://YOUR-DOMAIN/social-image.png">
+  <meta name="twitter:image" content="https://YOUR-DOMAIN/social-image.png">
+  -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Abraham Nordby | AI Engineer Making AI Simple for Small Businesses">
+  <meta name="twitter:description" content="I'm Abraham, a senior AI engineer and software developer in Norway. I build AI automations that save small teams time.">
+
+  <!-- ===== FAVICON =====
+       A simple "AN" monogram in Fjord Blue, drawn as a tiny SVG image
+       written straight into the page, so there is no extra file to manage. -->
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%232D5D7B'/%3E%3Ctext x='32' y='42' font-family='Arial,sans-serif' font-size='28' font-weight='700' fill='white' text-anchor='middle'%3EAN%3C/text%3E%3C/svg%3E">
+
+  <!-- ===== FONTS =====
+       Space Grotesk for headings and Inter for body text, from Google Fonts.
+       "display=swap" shows text straight away in a backup font while these load. -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Space+Grotesk:wght@600;700&display=swap">
+
+  <!-- ===== LIGHT/DARK MODE: PICK THE THEME BEFORE THE PAGE APPEARS =====
+       This tiny script runs straight away (it is not deferred), so the page
+       never flashes white before switching to dark mode.
+       1. If the visitor chose a mode before, use that (saved in localStorage).
+       2. Otherwise, follow their device setting (prefers-color-scheme).
+       try/catch stops errors if the browser blocks localStorage. -->
+  <script>
+    (function () {
+      var savedTheme = null;
+      try { savedTheme = localStorage.getItem('theme'); } catch (error) {}
+      var deviceWantsDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      var theme = savedTheme || (deviceWantsDark ? 'dark' : 'light');
+      document.documentElement.setAttribute('data-theme', theme);
+    })();
+  </script>
+
+  <!-- Our own styles -->
+  <link rel="stylesheet" href="style.css">
+
+  <!-- "defer" means the script runs after the HTML has loaded,
+       so it can safely find the elements on the page -->
+  <script src="script.js" defer></script>
+
+  <!-- ===== STRUCTURED DATA =====
+       Tells search engines who this page is about.
+       TODO: when you have your GitHub URL, add it to the "sameAs" list. -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Abraham Nordby",
+    "jobTitle": "Senior Software Developer and AI Engineer",
+    "email": "mailto:contact@norskmaster.com",
+    "sameAs": [
+      "https://www.youtube.com/@AIActuallyLab"
+    ]
+  }
+  </script>
+</head>
+<body>
+
+  <!-- ===== SKIP LINK =====
+       Hidden until a keyboard user presses Tab. It lets them jump
+       straight past the navigation to the main content. -->
+  <a href="#main-content" class="skip-link">Skip to content</a>
+
+  <!-- ===== NAVIGATION BAR =====
+       Stays at the top of the screen while you scroll ("sticky").
+       On phones the links are hidden behind a menu button. -->
+  <header class="site-header">
+    <nav class="navbar" aria-label="Main navigation">
+      <!-- Text logo: clicking it goes back to the top -->
+      <a href="#home" class="nav-logo">Abraham Nordby</a>
+
+      <!-- Buttons on the right of the bar -->
+      <div class="nav-actions">
+        <!-- Light/dark mode button. It is a "toggle" button:
+             aria-pressed="true" tells screen readers dark mode is on.
+             script.js updates it when clicked. -->
+        <button class="theme-toggle" id="themeToggle" type="button"
+                aria-label="Dark mode" aria-pressed="false">
+          <!-- Moon icon (shown in light mode) -->
+          <svg class="theme-icon theme-icon-moon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <path fill="currentColor" d="M21 14.5A9 9 0 0 1 9.5 3a9 9 0 1 0 11.5 11.5z"/>
+          </svg>
+          <!-- Sun icon (shown in dark mode) -->
+          <svg class="theme-icon theme-icon-sun" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <circle cx="12" cy="12" r="4.5" fill="currentColor"/>
+            <g stroke="currentColor" stroke-width="2" stroke-linecap="round">
+              <path d="M12 2v2M12 20v2M2 12h2M20 12h2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/>
+            </g>
+          </svg>
+        </button>
+
+        <!-- Menu button: only shown on small screens (see style.css).
+             aria-label is what screen readers announce. script.js changes it
+             to "Close menu" when the menu is open. -->
+        <button class="nav-toggle" id="navToggle" type="button"
+                aria-label="Open menu" aria-expanded="false" aria-controls="navLinks">
+          <!-- Three lines that make the "hamburger" icon -->
+          <span class="nav-toggle-bar" aria-hidden="true"></span>
+          <span class="nav-toggle-bar" aria-hidden="true"></span>
+          <span class="nav-toggle-bar" aria-hidden="true"></span>
+        </button>
+      </div>
+
+      <!-- The links. Each href="#..." jumps to the section with that id -->
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="main-content">
+
+    <!-- ===== HERO SECTION =====
+         The big welcome area people see first.
+         There is no photo yet, so the text is centred (as the brief asks).
+         TODO: if you add a portrait photo later, we can put it on the right. -->
+    <section id="home" class="hero">
+      <div class="container hero-content">
+        <h1 class="hero-title">Making Complex AI Simple for Small Businesses</h1>
+        <p class="hero-intro">
+          I'm Abraham, a senior AI engineer and software developer in Norway.
+          I build AI automations that save small teams time.
+        </p>
+        <!-- Two buttons that scroll down the page -->
+        <div class="hero-buttons">
+          <a href="#contact" class="button button-primary">Let's talk</a>
+          <a href="#projects" class="button button-secondary">See my work</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== ABOUT SECTION =====
+         The "fade-in" class makes this section gently appear when
+         you scroll to it (handled in script.js and style.css). -->
+    <section id="about" class="section fade-in">
+      <div class="container text-column">
+        <h2 class="section-title">Hi, I'm Abraham</h2>
+        <p>
+          I'm a senior software developer and AI engineer with 15+ years across
+          IT security, data science and software engineering. Today I build AI
+          automations that save small teams time.
+        </p>
+        <p>
+          I also run the YouTube channel
+          <!-- target="_blank" opens a new tab. rel="noopener" is a safety setting
+               for new tabs. The hidden text tells screen reader users about the new tab. -->
+          <a href="https://www.youtube.com/@AIActuallyLab" target="_blank" rel="noopener"><strong>"AI, Actually"</strong><span class="visually-hidden"> (opens in new tab)</span></a>,
+          where I explain AI tools in plain English.
+        </p>
+        <p>
+          I believe good technology should feel simple. I listen first, then help
+          you find the few places where AI can make your work easier, and I build
+          it with you step by step.
+        </p>
+      </div>
+    </section>
+
+    <!-- ===== SKILLS SECTION =====
+         Six cards. Each has a heading and a list of skills shown as "tags".
+         The grid shows 1 column on phones, 2 on tablets and 3 on desktops.
+         "section-white" gives this section a full-width white band, so the
+         page has a clear rhythm instead of one long grey background. -->
+    <section id="skills" class="section section-white fade-in">
+      <div class="container">
+        <h2 class="section-title">What I work with</h2>
+
+        <div class="skills-grid">
+
+          <!-- Skill card 1 -->
+          <div class="skill-card">
+            <h3 class="card-title">AI &amp; machine learning</h3>
+            <ul class="tag-list">
+              <li class="tag">LLMs</li>
+              <li class="tag">NLP</li>
+              <li class="tag">Computer vision</li>
+              <li class="tag">TensorFlow</li>
+              <li class="tag">Deep learning</li>
+              <li class="tag">Speech recognition</li>
+              <li class="tag">Text-to-speech</li>
+            </ul>
+          </div>
+
+          <!-- Skill card 2 -->
+          <div class="skill-card">
+            <h3 class="card-title">Automation</h3>
+            <ul class="tag-list">
+              <li class="tag">AI agents with n8n and Claude</li>
+            </ul>
+          </div>
+
+          <!-- Skill card 3 -->
+          <div class="skill-card">
+            <h3 class="card-title">Backend</h3>
+            <ul class="tag-list">
+              <li class="tag">C#</li>
+              <li class="tag">ASP.NET Core</li>
+              <li class="tag">Spring Boot</li>
+              <li class="tag">REST</li>
+              <li class="tag">gRPC</li>
+              <li class="tag">Microservices</li>
+            </ul>
+          </div>
+
+          <!-- Skill card 4 -->
+          <div class="skill-card">
+            <h3 class="card-title">Frontend &amp; mobile</h3>
+            <ul class="tag-list">
+              <li class="tag">Angular</li>
+              <li class="tag">TypeScript</li>
+              <li class="tag">Android (Kotlin)</li>
+              <li class="tag">iOS (Swift)</li>
+            </ul>
+          </div>
+
+          <!-- Skill card 5 -->
+          <div class="skill-card">
+            <h3 class="card-title">Data</h3>
+            <ul class="tag-list">
+              <li class="tag">Python</li>
+              <li class="tag">Pandas</li>
+              <li class="tag">NumPy</li>
+              <li class="tag">scikit-learn</li>
+              <li class="tag">Power BI</li>
+            </ul>
+          </div>
+
+          <!-- Skill card 6 -->
+          <div class="skill-card">
+            <h3 class="card-title">Cloud &amp; DevOps</h3>
+            <ul class="tag-list">
+              <li class="tag">Azure</li>
+              <li class="tag">Docker</li>
+              <li class="tag">Kubernetes</li>
+              <li class="tag">CI/CD</li>
+            </ul>
+          </div>
+
+        </div>
+
+        <!-- Certifications under the grid. Each one is its own list item,
+             so a long name never breaks awkwardly across two lines. -->
+        <div class="certifications">
+          <h3 class="certifications-title">Certifications:</h3>
+          <ul class="certifications-list">
+            <li>Deep Learning Specialization</li>
+            <li>TensorFlow Developer Specialization</li>
+            <li>IBM Applied Data Science</li>
+            <li>AZ-900 Azure Fundamentals</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== PROJECTS SECTION =====
+         Three project cards. Each card is an <article> with an image area,
+         tags, a title, short text and a result or link. -->
+    <section id="projects" class="section fade-in">
+      <div class="container">
+        <h2 class="section-title">Things I've built</h2>
+
+        <div class="projects-grid">
+
+          <!-- Project card 1: Bakery agent -->
+          <article class="project-card">
+            <!-- Image area. There is no screenshot yet, so it is a plain blue
+                 block with the project name. aria-hidden hides it from screen
+                 readers because the title below already says the same thing.
+                 TODO: swap for a screenshot, e.g.
+                 <img src="images/bakery.webp" alt="..." loading="lazy"> -->
+            <div class="project-image" aria-hidden="true">Bakery Customer Q&amp;A Agent</div>
+            <div class="project-body">
+              <ul class="tag-list">
+                <li class="tag">AI automation</li>
+                <li class="tag">n8n</li>
+                <li class="tag">Claude</li>
+              </ul>
+              <h3 class="card-title">Bakery Customer Q&amp;A Agent</h3>
+              <p class="project-text">
+                A local bakery spent a lot of time answering the same menu questions.
+                I built an AI agent in n8n that answers them from the bakery's own menu,
+                with Claude writing the replies. I built and launched it in 2 days.
+              </p>
+              <!-- The highlighted result -->
+              <p class="project-result">Saves the bakery about 5 hours a week.</p>
+              <!-- TODO (optional): add a second metric here, e.g. questions answered per week -->
+            </div>
+          </article>
+
+          <!-- Project card 2: SpeakLoop -->
+          <article class="project-card">
+            <div class="project-image" aria-hidden="true">SpeakLoop</div>
+            <div class="project-body">
+              <ul class="tag-list">
+                <li class="tag">iOS</li>
+                <li class="tag">Android</li>
+                <li class="tag">Web</li>
+                <li class="tag">LLMs</li>
+              </ul>
+              <h3 class="card-title">SpeakLoop</h3>
+              <p class="project-text">
+                A real-time language learning and speaking platform. It uses speech
+                recognition, text-to-speech and LLM-generated exercises. I founded it
+                and built it on my own, as a web platform and native mobile apps.
+              </p>
+              <!-- TODO: add the SpeakLoop URL, then remove the comment marks around this link:
+              <a href="https://YOUR-SPEAKLOOP-URL" class="project-link" target="_blank" rel="noopener">View SpeakLoop →<span class="visually-hidden"> (opens in new tab)</span></a>
+              -->
+            </div>
+          </article>
+
+          <!-- Project card 3: BrainBloom -->
+          <article class="project-card">
+            <div class="project-image" aria-hidden="true">BrainBloom</div>
+            <div class="project-body">
+              <ul class="tag-list">
+                <li class="tag">Android</li>
+                <li class="tag">Kotlin</li>
+                <li class="tag">Google Play</li>
+              </ul>
+              <h3 class="card-title">BrainBloom</h3>
+              <p class="project-text">
+                An educational Android game with 20+ mini-games across maths, science
+                and logic. It works offline and has an animated card interface.
+                I created and built it in Kotlin.
+              </p>
+              <!-- TODO: add the Google Play URL, then remove the comment marks around this link:
+              <a href="https://play.google.com/store/apps/details?id=YOUR-APP-ID" class="project-link" target="_blank" rel="noopener">Get it on Google Play →<span class="visually-hidden"> (opens in new tab)</span></a>
+              -->
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== LATEST VIDEO SECTION =====
+         Points visitors to the "AI, Actually" YouTube channel.
+         "section-white" gives it a white band, like the Skills section.
+         TODO: when you have a video you'd like to show, you can paste its
+         YouTube embed code (Share → Embed on YouTube) above the button. -->
+    <section id="video" class="section section-white fade-in">
+      <div class="container video-content">
+        <h2 class="section-title">Latest video</h2>
+        <p>
+          On my YouTube channel, <strong>"AI, Actually"</strong>, I explain AI tools
+          in plain English.
+        </p>
+        <!-- target="_blank" opens YouTube in a new tab. The hidden text tells
+             screen reader users about the new tab. -->
+        <a href="https://www.youtube.com/@AIActuallyLab" class="button button-primary"
+           target="_blank" rel="noopener">Watch on YouTube<span class="visually-hidden"> (opens in new tab)</span></a>
+      </div>
+    </section>
+
+    <!-- ===== CONTACT SECTION =====
+         A full-width Fjord Blue band with white text.
+         "mailto:" links open the visitor's email app with the address filled in. -->
+    <section id="contact" class="contact-band fade-in">
+      <div class="container contact-content">
+        <h2 class="section-title">Have a task that feels too slow?</h2>
+        <p>Let's talk about how AI can help.</p>
+
+        <a href="mailto:contact@norskmaster.com" class="button button-primary button-on-blue">Email me</a>
+
+        <!-- Links with small icons. The icons are decorative (aria-hidden),
+             so screen readers only read the text label. -->
+        <ul class="contact-links">
+          <li>
+            <a href="https://www.youtube.com/@AIActuallyLab" target="_blank" rel="noopener">
+              <!-- Simple YouTube-style "play" icon -->
+              <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                <rect x="2" y="5" width="20" height="14" rx="4" fill="currentColor"/>
+                <path class="icon-cutout" d="M10 9l5 3-5 3z"/>
+              </svg>
+              YouTube: "AI, Actually"<span class="visually-hidden"> (opens in new tab)</span>
+            </a>
+          </li>
+          <!-- TODO: add your GitHub URL, then remove the comment marks around this list item:
+          <li>
+            <a href="https://github.com/YOUR-USERNAME" target="_blank" rel="noopener">
+              <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                <path fill="currentColor" d="M12 2a10 10 0 0 0-3.16 19.49c.5.09.68-.22.68-.48v-1.7c-2.78.6-3.37-1.34-3.37-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.9 1.52 2.34 1.08 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.65 0 0 .84-.27 2.75 1.02a9.5 9.5 0 0 1 5 0c1.91-1.29 2.75-1.02 2.75-1.02.55 1.38.2 2.4.1 2.65.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.68-4.57 4.93.36.31.68.92.68 1.85v2.75c0 .27.18.58.69.48A10 10 0 0 0 12 2z"/>
+              </svg>
+              GitHub<span class="visually-hidden"> (opens in new tab)</span>
+            </a>
+          </li>
+          -->
+        </ul>
+
+        <p class="contact-location">Based in Norway.</p>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="site-footer">
+    <div class="container footer-content">
+      <!-- script.js replaces 2026 with the current year automatically -->
+      <p>&copy; <span id="currentYear">2026</span> Abraham Nordby</p>
+      <ul class="footer-links">
+        <li><a href="https://www.youtube.com/@AIActuallyLab" target="_blank" rel="noopener">YouTube<span class="visually-hidden"> (opens in new tab)</span></a></li>
+        <!-- TODO: add your GitHub URL, then remove the comment marks:
+        <li><a href="https://github.com/YOUR-USERNAME" target="_blank" rel="noopener">GitHub<span class="visually-hidden"> (opens in new tab)</span></a></li>
+        -->
+      </ul>
+    </div>
+  </footer>
+
+</body>
+</html>

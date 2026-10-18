@@ -1,0 +1,794 @@
+/* =========================================================
+   style.css – styles for the portfolio
+   Written "mobile-first": the basic styles are for phones,
+   and the @media rules near the bottom add changes for
+   tablets (640px and up) and desktops (1024px and up).
+   ========================================================= */
+
+
+/* ===== 1. COLOURS, FONTS & SETTINGS =====
+   CSS "variables" let us set a value once and reuse it.
+   Change a value here and it updates everywhere. */
+:root {
+  /* Colours from the brief */
+  --color-bg: #F6F7F4;        /* Fjord Mist – page background */
+  --color-text: #1F2A30;      /* Deep Slate – headings and body text */
+  --color-primary: #2D5D7B;   /* Fjord Blue – buttons, links, accents */
+  --color-accent: #E4A853;    /* Warm Amber – tags, small highlights, hover */
+  --color-muted: #6B7780;     /* Stone Grey – secondary text on white */
+  --color-surface: #FFFFFF;   /* White – cards */
+
+  /* Stone Grey is slightly too light to read on Fjord Mist (WCAG AA needs 4.5:1,
+     it only reaches 4.3:1). This slightly darker grey is used for small text
+     that sits directly on the page background. */
+  --color-muted-on-bg: #5F6B73;
+
+  /* Light amber for the tag "pills" (amber at about 20% opacity) */
+  --color-tag-bg: rgba(228, 168, 83, 0.2);
+
+  /* Extra colour roles, so dark mode (below) can swap them in one place */
+  --color-on-primary: #FFFFFF;          /* text on Fjord Blue buttons */
+  --color-on-accent: #1F2A30;           /* text on Warm Amber (always dark) */
+  --color-band: #2D5D7B;                /* Contact band background */
+  --color-on-band: #FFFFFF;             /* text on the Contact band */
+  --color-image-start: #2D5D7B;         /* project image gradient, first colour */
+  --color-image-end: #1F4560;           /* project image gradient, second colour */
+  --color-header-bg: rgba(246, 247, 244, 0.95);  /* Fjord Mist, very slightly see-through */
+  --color-line: rgba(31, 42, 48, 0.08); /* thin divider lines */
+  --color-shadow: rgba(31, 42, 48, 0.08);
+
+  /* Fonts. The names after the first are backups while the web fonts load. */
+  --font-heading: "Space Grotesk", system-ui, sans-serif;
+  --font-body: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+
+  /* Layout */
+  --max-width: 68.75rem;      /* 1100px – content never gets wider than this */
+  --side-padding: 1.5rem;     /* 24px on phones (40px on desktop, see below) */
+  --section-space: 4rem;      /* 64px between sections on phones (96px on desktop) */
+  --nav-height: 4rem;         /* used so sections don't hide under the sticky nav */
+}
+
+
+/* ===== 1b. DARK MODE COLOURS =====
+   When <html> has data-theme="dark" (set by script.js), these values
+   replace the light ones above. Everything else in this file uses the
+   variables, so it all switches automatically. */
+[data-theme="dark"] {
+  --color-bg: #12191D;          /* very dark slate page background */
+  --color-text: #E8ECEA;        /* soft white text */
+  --color-primary: #8BBCD9;     /* lighter Fjord Blue, readable on dark */
+  --color-muted: #A7B1B8;
+  --color-muted-on-bg: #A7B1B8;
+  --color-surface: #1C262C;     /* cards: a little lighter than the page */
+  --color-tag-bg: rgba(228, 168, 83, 0.22);
+
+  --color-on-primary: #12191D;
+  --color-band: #1F4560;
+  --color-on-band: #FFFFFF;
+  --color-image-start: #2D5D7B;
+  --color-image-end: #1A3A50;
+  --color-header-bg: rgba(18, 25, 29, 0.95);
+  --color-line: rgba(232, 236, 234, 0.1);
+  --color-shadow: rgba(0, 0, 0, 0.35);
+
+  /* Tells the browser to draw scrollbars and form controls in dark style */
+  color-scheme: dark;
+}
+
+
+/* ===== 2. BASIC RESET & PAGE SETUP ===== */
+
+/* Makes width/height include padding and borders – much easier to reason about */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  /* Smooth scrolling when you click a link to a section */
+  scroll-behavior: smooth;
+  /* Leaves room for the sticky nav so section headings aren't covered */
+  scroll-padding-top: var(--nav-height);
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: 1.0625rem;       /* 17px on phones */
+  line-height: 1.6;
+  color: var(--color-text);
+  background: var(--color-bg);
+}
+
+/* Headings use Space Grotesk and tighter line spacing */
+h1,
+h2,
+h3 {
+  font-family: var(--font-heading);
+  line-height: 1.2;
+  margin: 0;
+}
+
+p {
+  margin: 0 0 1rem;
+}
+
+/* Stops any long word or link from causing sideways scrolling */
+p,
+a {
+  overflow-wrap: break-word;
+}
+
+a {
+  color: var(--color-primary);
+}
+
+/* Visible focus ring for keyboard users on every link and button */
+a:focus-visible,
+button:focus-visible {
+  outline: 3px solid var(--color-primary);
+  outline-offset: 3px;
+}
+
+/* Lists used for tags and links: remove the default bullets and indent */
+.tag-list,
+.nav-links,
+.contact-links,
+.footer-links {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* Centres content and keeps it from getting too wide.
+   The side padding stops text touching the screen edge on phones. */
+.container {
+  width: 100%;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 var(--side-padding);
+}
+
+/* Keeps long paragraphs to about 65 characters per line, which is easier to read */
+.text-column p {
+  max-width: 65ch;
+}
+
+/* Hides text visually but keeps it for screen readers,
+   e.g. "(opens in new tab)" */
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+
+/* ===== 3. SKIP LINK =====
+   Sits off-screen until it gets keyboard focus, then slides into view. */
+.skip-link {
+  position: absolute;
+  top: -100px;
+  left: 1rem;
+  z-index: 100;
+  padding: 0.75rem 1rem;
+  background: var(--color-primary);
+  color: var(--color-on-primary);
+  border-radius: 8px;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.skip-link:focus {
+  top: 1rem;
+}
+
+
+/* ===== 4. NAVIGATION BAR ===== */
+
+.site-header {
+  /* "sticky" keeps the bar at the top while you scroll */
+  position: sticky;
+  top: 0;
+  z-index: 10;                /* sits above the page content */
+  background: var(--color-header-bg);
+  border-bottom: 1px solid var(--color-line);
+}
+
+.navbar {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 var(--side-padding);
+  min-height: var(--nav-height);
+  display: flex;
+  flex-wrap: wrap;            /* lets the menu drop below the bar on phones */
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Text logo */
+.nav-logo {
+  font-family: var(--font-heading);
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--color-text);
+  text-decoration: none;
+}
+
+/* The menu ("hamburger") button – visible on phones only */
+.nav-toggle {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 2.75rem;             /* 44px – big enough to tap easily */
+  height: 2.75rem;
+  padding: 0 0.6rem;
+  border: 2px solid var(--color-primary);
+  border-radius: 8px;
+  background: transparent;
+  cursor: pointer;
+}
+
+/* The three lines inside the menu button */
+.nav-toggle-bar {
+  display: block;
+  height: 2px;
+  background: var(--color-primary);
+  border-radius: 2px;
+}
+
+/* Groups the light/dark button and the menu button on the right */
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* ===== LIGHT/DARK MODE BUTTON =====
+   Shows a moon in light mode and a sun in dark mode. */
+.theme-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.75rem;             /* 44px – easy to tap */
+  height: 2.75rem;
+  padding: 0;
+  border: 2px solid var(--color-primary);
+  border-radius: 8px;
+  background: transparent;
+  color: var(--color-primary);
+  cursor: pointer;
+}
+
+.theme-toggle:hover {
+  background: var(--color-tag-bg);
+}
+
+.theme-icon {
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+/* Only one icon shows at a time */
+.theme-icon-sun {
+  display: none;
+}
+
+[data-theme="dark"] .theme-icon-sun {
+  display: block;
+}
+
+[data-theme="dark"] .theme-icon-moon {
+  display: none;
+}
+
+/* On phones the link list is hidden until the menu is opened */
+.nav-links {
+  display: none;
+  width: 100%;
+  padding-bottom: 0.75rem;
+}
+
+/* script.js adds the "open" class when the menu button is tapped */
+.nav-links.open {
+  display: block;
+}
+
+.nav-links a {
+  display: block;             /* makes the whole row tappable */
+  padding: 0.75rem 0;
+  color: var(--color-text);
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.nav-links a:hover {
+  color: var(--color-primary);
+  text-decoration: underline;
+}
+
+/* The link for the section you are reading. script.js sets
+   aria-current="true" on it, which screen readers also announce. */
+.nav-links a[aria-current="true"] {
+  color: var(--color-primary);
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 0.4em;
+}
+
+
+/* ===== 5. BUTTONS ===== */
+
+.button {
+  display: inline-block;
+  padding: 0.875rem 1.5rem;   /* 14px × 24px from the brief */
+  border-radius: 8px;
+  font-family: var(--font-body);
+  font-size: 0.9375rem;       /* 15px on phones */
+  font-weight: 500;
+  line-height: 1.2;
+  text-align: center;
+  text-decoration: none;
+  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+/* Primary: Fjord Blue with white text. Hover: Warm Amber with Deep Slate text */
+.button-primary {
+  background: var(--color-primary);
+  color: var(--color-on-primary);
+  border: 2px solid var(--color-primary);
+}
+
+.button-primary:hover {
+  background: var(--color-accent);
+  border-color: var(--color-accent);
+  color: var(--color-on-accent);
+}
+
+/* Secondary: see-through with a Fjord Blue border */
+.button-secondary {
+  background: transparent;
+  color: var(--color-primary);
+  border: 2px solid var(--color-primary);
+}
+
+.button-secondary:hover {
+  background: var(--color-primary);
+  color: var(--color-on-primary);
+}
+
+
+/* ===== 6. HERO SECTION ===== */
+
+.hero {
+  padding: var(--section-space) 0;
+}
+
+/* No photo yet, so the hero text is centred */
+.hero-content {
+  text-align: center;
+}
+
+.hero-title {
+  font-size: 2.25rem;         /* 36px on phones */
+  font-weight: 700;
+  max-width: 20ch;            /* keeps the headline to a few balanced lines */
+  margin: 0 auto 1.5rem;
+}
+
+.hero-intro {
+  max-width: 50ch;            /* breaks the intro into two balanced lines on desktop */
+  font-size: 1.125em;         /* a little bigger than body text */
+  margin: 0 auto 2rem;
+}
+
+/* Buttons sit side by side and wrap onto a new line if there isn't room */
+.hero-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+}
+
+
+/* ===== 7. GENERAL SECTIONS ===== */
+
+.section {
+  padding: var(--section-space) 0;
+}
+
+/* A full-width white band. Used on the Skills section so the page
+   alternates between Fjord Mist and white and is easier to scan. */
+.section-white {
+  background: var(--color-surface);
+}
+
+.section-title {
+  font-size: 1.75rem;         /* 28px on phones */
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+}
+
+/* Card titles (skills and projects) */
+.card-title {
+  font-size: 1.25rem;         /* 20px on phones */
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+
+/* ===== 8. TAGS =====
+   Small "pill" labels with a light amber background. */
+.tag-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.tag {
+  padding: 0.25rem 0.75rem;
+  border-radius: 999px;       /* fully rounded "pill" shape */
+  background: var(--color-tag-bg);
+  color: var(--color-text);
+  font-size: 0.9375rem;
+  font-weight: 500;
+}
+
+
+/* ===== 9. SKILLS ===== */
+
+/* CSS Grid: one column on phones (more are added in the media queries below) */
+.skills-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+
+.skill-card {
+  padding: 1.5rem;
+  background: var(--color-bg);       /* Fjord Mist cards on the white band */
+  border-radius: 12px;
+}
+
+/* Certifications: a small heading followed by the names in a row.
+   The names wrap neatly onto new lines on small screens. */
+.certifications {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.25rem 0.75rem;
+  margin-top: 2rem;
+  font-size: 0.9375rem;
+  color: var(--color-muted);         /* Stone Grey is readable on white */
+}
+
+.certifications-title {
+  font-family: var(--font-body);
+  font-size: inherit;
+  font-weight: 500;
+  color: var(--color-text);
+}
+
+/* On phones the names are stacked, one per line */
+.certifications-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem 0.75rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+
+/* ===== 10. PROJECT CARDS ===== */
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+
+.project-card {
+  display: flex;
+  flex-direction: column;     /* stacks the image and the text vertically */
+  overflow: hidden;           /* keeps the blue image block inside the rounded corners */
+  background: var(--color-surface);
+  border-radius: 12px;
+  box-shadow: 0 4px 16px var(--color-shadow);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* Slight lift when hovering a card */
+.project-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 28px var(--color-shadow);
+}
+
+/* Placeholder image area: a plain Fjord Blue block with the project name */
+.project-image {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  aspect-ratio: 5 / 2;        /* a slim banner, so the text is higher up the card */
+  padding: 1rem;
+  /* A gentle diagonal fade from Fjord Blue to a darker blue,
+     so the block looks intentional rather than empty */
+  background: linear-gradient(135deg, var(--color-image-start) 0%, var(--color-image-end) 100%);
+  color: #FFFFFF;
+  font-family: var(--font-heading);
+  font-size: 1.25rem;
+  font-weight: 600;
+  text-align: center;
+}
+
+/* The text part of the card. flex-grow fills the card height so cards line up. */
+.project-body {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  padding: 1.5rem;
+}
+
+.project-body .tag-list {
+  margin-bottom: 1rem;
+}
+
+.project-text {
+  flex-grow: 1;               /* pushes the result or link to the bottom */
+  color: var(--color-text);   /* full-strength text: this is the copy that sells your work */
+}
+
+/* The highlighted result: a small amber bar on the left (this section's one highlight) */
+.project-result {
+  margin: 0;
+  padding-left: 0.75rem;
+  border-left: 4px solid var(--color-accent);
+  font-weight: 500;
+}
+
+.project-link {
+  font-weight: 500;
+  padding: 0.5rem 0;          /* bigger tap area */
+}
+
+
+/* ===== 10b. LATEST VIDEO ===== */
+
+.video-content p {
+  max-width: 65ch;
+  margin-bottom: 1.5rem;
+}
+
+/* ===== 11. CONTACT BAND ===== */
+
+.contact-band {
+  padding: var(--section-space) 0;
+  background: var(--color-band);
+  color: var(--color-on-band);
+}
+
+.contact-content {
+  text-align: center;
+}
+
+.contact-content p {
+  margin-bottom: 1.5rem;
+}
+
+/* On the blue band, the primary button is white so it stands out */
+.button-on-blue {
+  background: #FFFFFF;
+  border-color: #FFFFFF;
+  color: var(--color-band);
+}
+
+.contact-links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem 2rem;
+  margin: 2rem 0 1.5rem;
+}
+
+.contact-links a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 0;          /* bigger tap area */
+  color: var(--color-on-band);
+  font-weight: 500;
+}
+
+.icon {
+  width: 1.5rem;
+  height: 1.5rem;
+  flex-shrink: 0;
+}
+
+/* The little "play" triangle inside the YouTube icon matches the band colour */
+.icon-cutout {
+  fill: var(--color-band);
+}
+
+.contact-location {
+  font-size: 0.9375rem;
+  margin: 0;
+}
+
+/* Blue focus rings would be invisible on the blue band, so use white here */
+.contact-band a:focus-visible {
+  outline-color: #FFFFFF;
+}
+
+
+/* ===== 12. FOOTER ===== */
+
+.site-footer {
+  padding: 2rem 0;
+  font-size: 0.9375rem;
+  color: var(--color-muted-on-bg);
+}
+
+.footer-content {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
+
+.footer-content p {
+  margin: 0;
+}
+
+.footer-links {
+  display: flex;
+  gap: 1.5rem;
+}
+
+
+/* ===== 13. FADE-IN ANIMATION =====
+   Sections with the "fade-in" class start invisible and slightly lower.
+   script.js adds the "visible" class when they scroll into view.
+   We only hide them when the "js" class is on <html>, so if JavaScript
+   is turned off the content is still shown. Kept under 300ms (brief). */
+.js .fade-in {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.28s ease-out, transform 0.28s ease-out;
+}
+
+.js .fade-in.visible {
+  opacity: 1;
+  transform: none;
+}
+
+
+/* ===== 14. REDUCED MOTION =====
+   Some people ask their device for less movement. We turn off
+   smooth scrolling, the fade-in and the card lift for them. */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .js .fade-in {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  .project-card,
+  .button {
+    transition: none;
+  }
+
+  .project-card:hover {
+    transform: none;
+  }
+}
+
+
+/* ===== 15. TABLETS (640px and up) ===== */
+@media (min-width: 40rem) {
+  /* Certifications sit in a row, with a small dot between names */
+  .certifications-list {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  /* The dot goes after each name (except the last), so when the row
+     wraps, a new line never starts with a dot */
+  .certifications-list li:not(:last-child)::after {
+    content: "·";
+    margin-left: 0.75rem;
+  }
+
+  /* Two skill cards per row */
+  .skills-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+
+/* ===== 16. DESKTOPS (1024px and up) ===== */
+@media (min-width: 64rem) {
+  :root {
+    --side-padding: 2.5rem;   /* 40px */
+    --section-space: 6rem;    /* 96px */
+  }
+
+  body {
+    font-size: 1.125rem;      /* 18px */
+  }
+
+  /* Hide the menu button and always show the links in a row */
+  .nav-toggle {
+    display: none;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 2rem;
+    width: auto;
+    padding: 0;
+  }
+
+  .nav-links a {
+    padding: 0.5rem 0;
+  }
+
+  /* On desktop the links come first and the light/dark button sits on the far right.
+     "order" changes the visual order without changing the HTML. */
+  .nav-links {
+    order: 2;
+    margin-left: auto;
+  }
+
+  .nav-actions {
+    order: 3;
+    margin-left: 1.5rem;
+  }
+
+  .hero-title {
+    font-size: 3.25rem;       /* 52px */
+  }
+
+  /* A full-width white band. Used on the Skills section so the page
+   alternates between Fjord Mist and white and is easier to scan. */
+.section-white {
+  background: var(--color-surface);
+}
+
+.section-title {
+    font-size: 2.25rem;       /* 36px */
+  }
+
+  .card-title {
+    font-size: 1.375rem;      /* 22px */
+  }
+
+  .button {
+    font-size: 1rem;          /* 16px */
+  }
+
+  .tag,
+  .certifications,
+  .contact-location,
+  .site-footer {
+    font-size: 1rem;
+  }
+
+  /* Three cards per row */
+  .skills-grid,
+  .projects-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
