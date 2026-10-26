@@ -1,0 +1,69 @@
+📋 PROMPTS IN THIS COURSE (full copy-paste text in the pinned comment)
+
+Module 1: What is an LLM? (2:00)
+  1. What is a token?
+  2. Test for hallucination
+  3. Fact-check with web search
+  4. What is an API?
+
+Module 2: What is an AI agent? (8:53)
+  1. Watch the agent loop
+  2. Test your n8n agent
+
+Module 3: Getting started (16:24)
+  1. Your first message
+
+Module 4: The Claude interface (23:35)
+  1. Quick task (Haiku)
+  2. Deep thinking (Opus)
+  3. Incognito chat test
+
+Module 5: Prompt engineering (32:59)
+  1. A weak prompt (before)
+  2. The five-box prompt (after)
+  3. Teach by example
+  4. Structure with XML tags
+  5. Let Claude ask first
+  6. Ask for alternatives
+
+Module 6: Research, files and images (42:10)
+  1. Web search with sources
+  2. Deep Research report
+  3. Read a file (your CV)
+  4. Read an image (screenshot)
+
+Module 7: Artifacts (50:08)
+  1. Build an app: rate calculator
+  2. Improve the app
+  3. Create a document
+  4. Quick edit
+  5. Turn it into slides
+
+Module 8: Connectors and Chrome (1:00:18)
+  1. Google Drive connector
+  2. Claude in Chrome
+
+Module 9: Skills and customization (1:09:59)
+  1. Personal preferences (Settings)
+  2. Test your preferences
+  3. Excel skill: skills matrix
+  4. Create your own skill
+  5. Use your skill
+
+Module 10: Projects (1:20:07)
+  1. Project name and description
+  2. Project instructions
+  3. Plan the website
+  4. Write the build brief
+
+Module 11: Claude Code (1:36:25)
+  1. Your first Claude Code task
+  2. Create CLAUDE.md (rules)
+  3. Install in PowerShell (bonus)
+  4. First terminal question (bonus)
+
+Module 12: Build and publish a website (2:00:47)
+  1. Build the site from the brief
+  2. Expert review
+  3. Add dark mode
+  4. Add a new section

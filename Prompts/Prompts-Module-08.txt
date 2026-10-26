@@ -1,0 +1,9 @@
+📋 PROMPTS USED IN THIS VIDEO (copy and paste)
+
+━━ MODULE 8: CONNECTORS AND CHROME ━━
+
+1. Google Drive connector
+Find the document called "Northside price list" in my Google Drive and tell me which service is the most expensive and which is the cheapest.
+
+2. Claude in Chrome
+Go to n8n.io, find their pricing page, and summarise the plans in a short table.

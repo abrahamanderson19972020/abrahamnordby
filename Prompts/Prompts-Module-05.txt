@@ -1,0 +1,27 @@
+📋 PROMPTS USED IN THIS VIDEO (copy and paste)
+
+━━ MODULE 5: PROMPT ENGINEERING ━━
+
+1. A weak prompt (before)
+Write an about me section for my website.
+
+2. The five-box prompt (after)
+ROLE: You are an expert personal-brand copywriter.
+GOAL: Write the "About me" section of my portfolio website, so that small businesses want to hire me to help them use AI.
+CONTEXT: My name is Abraham. I'm a software developer based in Norway. I build AI automations and run the YouTube channel "AI, Actually", where I explain AI tools in plain English. I like making complicated tech feel simple.
+FORMAT: A headline of up to 8 words, then two short paragraphs (max 90 words in total), then a one-line call to action.
+RULES: First person. Warm and confident, not salesy. No clichés like "passionate" or "results-driven". No emojis.
+
+3. Teach by example
+Now write 3 one-line descriptions for projects on my portfolio. Match the style of these two examples exactly: Example 1: "Inbox Zero Bot: an n8n agent that sorts 200 emails a day, so the team only reads what matters." Example 2: "Shop Assistant: a Claude Project that answers customer questions from the shop's own price list." My projects: a YouTube channel about AI; a portfolio website built with Claude Code; an AI workflow that turns meeting notes into tasks.
+
+4. Structure with XML tags
+<instructions>Compare the two job adverts below. Give me a table of the skills they share, then the skills that appear in only one of them.</instructions>
+<advert_1>Junior AI Developer. Python, REST APIs, prompt engineering, Git. Nice to have: n8n or Zapier.</advert_1>
+<advert_2>Automation Specialist. n8n, APIs and webhooks, JSON, good communication. Nice to have: Claude or OpenAI experience.</advert_2>
+
+5. Let Claude ask first
+I want to plan my personal portfolio website. Before you suggest anything, ask me 5 short questions, one per line, that you need answered to plan it well.
+
+6. Ask for alternatives
+Great. Now give me two alternative versions of the homepage headline: one more professional, one more playful.

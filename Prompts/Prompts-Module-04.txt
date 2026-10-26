@@ -1,0 +1,12 @@
+📋 PROMPTS USED IN THIS VIDEO (copy and paste)
+
+━━ MODULE 4: THE CLAUDE INTERFACE ━━
+
+1. Quick task (Haiku)
+Summarise in one line: Northside Bike Repair fixes bikes and e-bikes, lends a free bike during repairs, and has been open since 2015.
+
+2. Deep thinking (Opus)
+I want to start a small online business teaching AI skills to beginners, with a budget of 500 euros. Think it through carefully and give me a 90-day plan in 8 bullet points, including the biggest risk.
+
+3. Incognito chat test
+Hello! Will you remember this chat?

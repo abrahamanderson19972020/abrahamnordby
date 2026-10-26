@@ -1,0 +1,18 @@
+📋 PROMPTS USED IN THIS VIDEO (copy and paste)
+
+━━ MODULE 12: BUILD AND PUBLISH A WEBSITE ━━
+
+1. Build the site from the brief
+Build my one-page portfolio website in this folder, following CLAUDE.md and the brief below. Create index.html, style.css and script.js. Include a sticky navigation bar, a hero section, About, Skills, 3 project cards, and a Contact section with my email as a mailto link. Add smooth scrolling and a subtle fade-in when sections appear. When you're done, list the files you created.
+
+BRIEF:
+[paste your Portfolio build brief here]
+
+2. Expert review
+Review the site like a senior web designer. List the 3 most important improvements for design, readability and accessibility, then make them.
+
+3. Add dark mode
+Add a light/dark mode toggle in the navigation bar that remembers the visitor's choice.
+
+4. Add a new section
+Add a "Latest video" section after Projects, with a short description of my YouTube channel "AI, Actually" and a button that links to https://www.youtube.com/@AIActuallyLab. Tell me which files you changed.

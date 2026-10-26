@@ -1,0 +1,18 @@
+📋 PROMPTS USED IN THIS VIDEO (copy and paste)
+
+━━ MODULE 9: SKILLS AND CUSTOMIZATION ━━
+
+1. Personal preferences (Settings)
+I'm a developer and the creator of the YouTube channel "AI, Actually". My audience is beginners and small-business owners. Write in clear, friendly British English. Keep answers short unless I ask for detail. When I ask for content ideas, give me 3 options in a numbered list.
+
+2. Test your preferences
+Give me ideas for my next YouTube video.
+
+3. Excel skill: skills matrix
+Create an Excel file called "Skills matrix" for my portfolio. Columns: Skill, Category, Level (1-5), Years, Project where I used it. Fill it with 8 example rows for an AI developer, and add a chart of the levels.
+
+4. Create your own skill
+Help me create a skill called "portfolio-case-study". When I give it rough notes about a project, it should write a short case study for my portfolio with these sections: The problem, What I built, Tools used, The result. Ask me any questions you need, then package the skill as a ZIP I can upload.
+
+5. Use your skill
+Case study please. Notes: built an n8n agent for a local bakery, it answers customer questions from their menu using Claude, saves them about 5 hours a week, took 2 days to build.

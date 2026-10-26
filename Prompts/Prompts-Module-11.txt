@@ -1,0 +1,15 @@
+📋 PROMPTS USED IN THIS VIDEO (copy and paste)
+
+━━ MODULE 11: CLAUDE CODE ━━
+
+1. Your first Claude Code task
+Create a simple web page called hello.html that says "Hello from Claude Code" in large text, with a button that changes the background to a random colour. Then explain in 3 short bullet points what each part of the file does.
+
+2. Create CLAUDE.md (rules)
+Create a CLAUDE.md file for this project with these rules: this folder is my personal portfolio website; use plain HTML, CSS and JavaScript only, with no frameworks; the site must work well on mobile phones; keep the code simple and well commented, because I'm a beginner.
+
+3. Install in PowerShell (bonus)
+irm https://claude.ai/install.ps1 | iex
+
+4. First terminal question (bonus)
+What files are in this folder?

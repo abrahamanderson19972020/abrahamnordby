@@ -1,0 +1,16 @@
+Bakery Customer Q&A Agent
+An n8n agent that answers customer questions from the bakery's menu, built in 2 days.
+
+The problem
+A local bakery spent a lot of time answering the same customer questions about its menu. Staff had to stop their work to reply. This took time away from baking and serving.
+
+What I built
+I built an AI agent in n8n that answers customer questions using the bakery's menu. Claude writes the answers, so replies are based on what the bakery actually sells. I built and launched it in 2 days.
+
+Tools used
+- n8n: the workflow and agent
+- Claude: understanding questions and writing answers
+- The bakery's menu: the source for every answer
+
+The result
+The agent saves the bakery about 5 hours a week. [add metric: e.g. questions answered per week or response time]

@@ -1,0 +1,18 @@
+📋 PROMPTS USED IN THIS VIDEO (copy and paste)
+
+━━ MODULE 10: PROJECTS ━━
+
+1. Project name and description
+Name: My Portfolio Website
+Description: Everything about me and my work, for building my portfolio
+
+2. Project instructions
+You are helping me build my personal portfolio website.
+Only use facts from the uploaded files. Never invent jobs, clients, numbers or qualifications. If something is missing, ask me.
+Write in first person, warm and confident, in British English. Keep website copy short and scannable.
+
+3. Plan the website
+Plan my one-page portfolio website. Give me: the sections in order, the exact text for each section (headline, about, skills, 3 projects, contact), and a suggested colour palette and font pairing.
+
+4. Write the build brief
+Now write this plan as a single, detailed brief I can give to a developer to build the site. Call it "Portfolio build brief".

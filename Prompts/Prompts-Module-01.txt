@@ -1,0 +1,15 @@
+📋 PROMPTS USED IN THIS VIDEO (copy and paste)
+
+━━ MODULE 1: WHAT IS AN LLM? ━━
+
+1. What is a token?
+Explain in simple words what a "token" is for an AI model. Then split this sentence into approximate tokens and show them in a table: "Claude helps small businesses save hours every week."
+
+2. Test for hallucination
+Give me three research papers about marketing for small bicycle shops, with authors, year and journal.
+
+3. Fact-check with web search
+Please search the web and check whether each of these papers really exists. Be honest about anything you can't verify.
+
+4. What is an API?
+I'm a complete beginner. Explain what an API is using a restaurant analogy. Then show a short, simple example of a JSON request that an app would send to an AI model's API to ask "Write a haiku about bicycles", and explain each line in one sentence.

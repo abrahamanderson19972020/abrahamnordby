@@ -1,0 +1,9 @@
+📋 PROMPTS USED IN THIS VIDEO (copy and paste)
+
+━━ MODULE 2: WHAT IS AN AI AGENT? ━━
+
+1. Watch the agent loop
+Find three well-reviewed bicycle repair shops in Oslo. For each one, find its Saturday opening hours and the price of a basic service. Then compare them in a table and recommend one, with links to your sources.
+
+2. Test your n8n agent
+Who founded Wikipedia, and in which year? Then calculate 17% of 2,350 euros.

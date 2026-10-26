@@ -1,0 +1,18 @@
+📋 PROMPTS USED IN THIS VIDEO (copy and paste)
+
+━━ MODULE 7: ARTIFACTS ━━
+
+1. Build an app: rate calculator
+Build an interactive "Freelance rate calculator" as an artifact. Inputs: desired yearly income in euros, weeks of holiday, billable hours per week, and a slider for business costs (0-40%). Output: the hourly rate I should charge, shown big, with a short explanation. Modern, clean design with a dark blue accent.
+
+2. Improve the app
+Add a "monthly income" result under the hourly rate, and a reset button. Keep everything else the same.
+
+3. Create a document
+Write a one-page document called "My AI services" for small businesses: what I offer (AI automations, Claude training, n8n workflows), how I work in 3 steps, and how to contact me.
+
+4. Quick edit
+make this friendlier
+
+5. Turn it into slides
+Turn "My AI services" into a 5-slide presentation for a meeting with a local business owner: title, the problem, my 3 services, how I work, next steps.

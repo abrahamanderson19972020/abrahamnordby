@@ -1,0 +1,96 @@
+📋 ALL COURSE PROMPTS · PART 2 of 2: Modules 7–12
+
+━━ MODULE 7: ARTIFACTS (50:08) ━━
+
+1. Build an app: rate calculator
+Build an interactive "Freelance rate calculator" as an artifact. Inputs: desired yearly income in euros, weeks of holiday, billable hours per week, and a slider for business costs (0-40%). Output: the hourly rate I should charge, shown big, with a short explanation. Modern, clean design with a dark blue accent.
+
+2. Improve the app
+Add a "monthly income" result under the hourly rate, and a reset button. Keep everything else the same.
+
+3. Create a document
+Write a one-page document called "My AI services" for small businesses: what I offer (AI automations, Claude training, n8n workflows), how I work in 3 steps, and how to contact me.
+
+4. Quick edit
+make this friendlier
+
+5. Turn it into slides
+Turn "My AI services" into a 5-slide presentation for a meeting with a local business owner: title, the problem, my 3 services, how I work, next steps.
+
+
+━━ MODULE 8: CONNECTORS AND CHROME (1:00:18) ━━
+
+1. Google Drive connector
+Find the document called "Northside price list" in my Google Drive and tell me which service is the most expensive and which is the cheapest.
+
+2. Claude in Chrome
+Go to n8n.io, find their pricing page, and summarise the plans in a short table.
+
+
+━━ MODULE 9: SKILLS AND CUSTOMIZATION (1:09:59) ━━
+
+1. Personal preferences (Settings)
+I'm a developer and the creator of the YouTube channel "AI, Actually". My audience is beginners and small-business owners. Write in clear, friendly British English. Keep answers short unless I ask for detail. When I ask for content ideas, give me 3 options in a numbered list.
+
+2. Test your preferences
+Give me ideas for my next YouTube video.
+
+3. Excel skill: skills matrix
+Create an Excel file called "Skills matrix" for my portfolio. Columns: Skill, Category, Level (1-5), Years, Project where I used it. Fill it with 8 example rows for an AI developer, and add a chart of the levels.
+
+4. Create your own skill
+Help me create a skill called "portfolio-case-study". When I give it rough notes about a project, it should write a short case study for my portfolio with these sections: The problem, What I built, Tools used, The result. Ask me any questions you need, then package the skill as a ZIP I can upload.
+
+5. Use your skill
+Case study please. Notes: built an n8n agent for a local bakery, it answers customer questions from their menu using Claude, saves them about 5 hours a week, took 2 days to build.
+
+
+━━ MODULE 10: PROJECTS (1:20:07) ━━
+
+1. Project name and description
+Name: My Portfolio Website
+Description: Everything about me and my work, for building my portfolio
+
+2. Project instructions
+You are helping me build my personal portfolio website.
+Only use facts from the uploaded files. Never invent jobs, clients, numbers or qualifications. If something is missing, ask me.
+Write in first person, warm and confident, in British English. Keep website copy short and scannable.
+
+3. Plan the website
+Plan my one-page portfolio website. Give me: the sections in order, the exact text for each section (headline, about, skills, 3 projects, contact), and a suggested colour palette and font pairing.
+
+4. Write the build brief
+Now write this plan as a single, detailed brief I can give to a developer to build the site. Call it "Portfolio build brief".
+
+
+━━ MODULE 11: CLAUDE CODE (1:36:25) ━━
+
+1. Your first Claude Code task
+Create a simple web page called hello.html that says "Hello from Claude Code" in large text, with a button that changes the background to a random colour. Then explain in 3 short bullet points what each part of the file does.
+
+2. Create CLAUDE.md (rules)
+Create a CLAUDE.md file for this project with these rules: this folder is my personal portfolio website; use plain HTML, CSS and JavaScript only, with no frameworks; the site must work well on mobile phones; keep the code simple and well commented, because I'm a beginner.
+
+3. Install in PowerShell (bonus)
+irm https://claude.ai/install.ps1 | iex
+
+4. First terminal question (bonus)
+What files are in this folder?
+
+
+━━ MODULE 12: BUILD AND PUBLISH A WEBSITE (2:00:47) ━━
+
+1. Build the site from the brief
+Build my one-page portfolio website in this folder, following CLAUDE.md and the brief below. Create index.html, style.css and script.js. Include a sticky navigation bar, a hero section, About, Skills, 3 project cards, and a Contact section with my email as a mailto link. Add smooth scrolling and a subtle fade-in when sections appear. When you're done, list the files you created.
+
+BRIEF:
+[paste your Portfolio build brief here]
+
+2. Expert review
+Review the site like a senior web designer. List the 3 most important improvements for design, readability and accessibility, then make them.
+
+3. Add dark mode
+Add a light/dark mode toggle in the navigation bar that remembers the visitor's choice.
+
+4. Add a new section
+Add a "Latest video" section after Projects, with a short description of my YouTube channel "AI, Actually" and a button that links to https://www.youtube.com/@AIActuallyLab. Tell me which files you changed.
